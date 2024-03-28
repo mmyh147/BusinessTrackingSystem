@@ -20,7 +20,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty
+    @NotEmpty(message = "name must not be empty")
     @Column(columnDefinition = "varchar(15) not null unique")
     private String name;
 

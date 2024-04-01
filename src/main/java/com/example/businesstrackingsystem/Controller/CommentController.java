@@ -48,4 +48,10 @@ public class CommentController {
         return ResponseEntity.ok(new ApiResponse("Comment deleted successfully with ID : " + id));
     }
 
+    @GetMapping("/get-by-task/{taskid}")
+    public ResponseEntity getAllComment(@PathVariable Integer taskid) {
+        return ResponseEntity.ok(commentService.getAllCommentByTask(taskid));
+    }
+
+
 }

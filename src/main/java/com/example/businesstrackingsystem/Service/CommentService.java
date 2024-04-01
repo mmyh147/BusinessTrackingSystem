@@ -5,6 +5,7 @@ import com.example.businesstrackingsystem.Api.ApiException;
 import com.example.businesstrackingsystem.Model.Comment;
 import com.example.businesstrackingsystem.Model.Task;
 import com.example.businesstrackingsystem.Repository.CommentRepository;
+import com.example.businesstrackingsystem.Repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class CommentService {
 
 
     private final CommentRepository commentRepository;
-
+    private final TaskRepository taskRepository;
     public List<Comment> getAllComment() {
         return commentRepository.findAll();
     }
@@ -43,4 +44,12 @@ public class CommentService {
 
 
     }
+
+    public List<Comment> getAllCommentByTask(Integer taskId) {
+        if (!taskRepository.existsById(taskId)){
+            throw new ApiException("Task not found");
+        }
+        return commentRepository.findAllByTaskId(taskId);
+    }
+
 }

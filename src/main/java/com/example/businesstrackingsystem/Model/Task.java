@@ -22,11 +22,11 @@ public class Task {
     @NotEmpty(message = "title must not be empty")
     @Column(columnDefinition = "varchar(20) not null")
     private String title;
-    @Column(columnDefinition = "varchar(15) not null check(status = 'in-progress' or status = 'in-review'  or status = 'to-do' or status = 'complete')")
+    @Column(columnDefinition = "varchar(15) check(status = 'in-progress' or status = 'in-review'  or status = 'to-do' or status = 'complete')")
     @Pattern(regexp = "(in-progress|in-review|submit|to-do|complete)", message = "Status must be 'in-progress', 'in-review', 'submit', or 'to-do'")
     private String status;
-    @Column(columnDefinition = "varchar(10) not null check(review = 'reject' or review = 'approve')")
-    @Pattern(regexp = "(approve|reject)", message = "Status must be 'in-progress', 'in-review', 'submit', or 'to-do'")
+    @Column(columnDefinition = "varchar(10) check(review = 'reject' or review = 'approve')")
+    @Pattern(regexp = "(approve|reject)", message = "Status must be 'approve' or 'reject'")
     private String review;
     @NotEmpty(message = "description must not be empty")
     @Column(columnDefinition = "varchar(200) not null")

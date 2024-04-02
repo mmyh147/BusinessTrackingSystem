@@ -217,6 +217,7 @@ public long calculateDaysToSubmit(Integer taskId) {
         Integer num = 0;
         List<Task> tasks = taskRepository.findAll();
         for (Task task : tasks){
+
             if (task.getSubmitDate().isAfter(task.getDeadline())) {
                 num++;
             }

@@ -24,6 +24,7 @@ public class CommentController {
 
     @GetMapping("/get")
     public ResponseEntity getAllComment() {
+        logger.info("request to retrieve all comments");
         return ResponseEntity.ok(commentService.getAllComment());
     }
 
